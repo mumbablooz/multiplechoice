@@ -16,7 +16,7 @@ console.log(themenArray[pageIndex].stateName)
       .then(data=> {
       setFragen(data[themenArray[pageIndex].stateName])
   })
-  },[setFragen])
+  },[setFragen,pageIndex])
   
   useEffect(()=>{
 setOpacity(1)
