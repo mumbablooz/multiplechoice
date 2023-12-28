@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext }  from 'react'
 import Link from 'next/link'
-import { AndAgainContext } from '../context'
 
 export function ShowFinalResult({points,questionArrayLength,andAgain,setAndAgain}) {
   const [ opacity, setOpacity ] = useState(0)
