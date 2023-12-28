@@ -3,7 +3,6 @@ import React,{useEffect, useState, useContext} from 'react'
 import {ShowTrueAnswer} from './ShowTrueAnswer'
 import {ShowCurrentQuestion} from './ShowCurrentQuestion'
 import {ShowFinalResult} from './ShowFinalResult'
-import {AndAgainContext} from '../context'
 
 export default function MultipleChoice({points,setPoints,questionArray,andAgain,setAndAgain}) {
     const [ trueAnswer, setTrueAnswer ] = useState(null)
