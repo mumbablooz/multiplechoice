@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import Image from 'next/image'
 
 export function ShowTrueAnswer({trueAnswer,setTrueAnswer,question}) {
 
@@ -38,7 +39,7 @@ setOpacity(1)
             display: 'flex',
             flexDirection: 'column',
         }}>
-          <p>{question}</p>
+          <p>{question.question}</p>
         {trueAnswer.map((line,lineIndex)=>{
   return <b 
 key={'line-'+lineIndex}
@@ -47,11 +48,12 @@ style={{
 }}>{line}</b>
   })}
           </div>
-          
+          {question.answers[0].images[0] && <Image src={question.answers[0].images[0]} width={200} height={200} alt='Bundesland Bild' />}
         <button 
         style={{
           alignSelf:'center',
           width: '100vw',
+          marginTop: '0.5rem'
         }}
         onClick={()=>{
           setTrueAnswer(null)

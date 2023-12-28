@@ -34,7 +34,10 @@ if(andAgain){
 ////////////
     useEffect(()=>{
 if(trueAnswer){
-        setContent(<ShowTrueAnswer trueAnswer={trueAnswer} setTrueAnswer={setTrueAnswer} question={sortQuestionArray[currentQuestionIndex-1].question}/>)
+        setContent(<ShowTrueAnswer 
+          trueAnswer={trueAnswer} 
+          setTrueAnswer={setTrueAnswer} 
+          question={sortQuestionArray[currentQuestionIndex-1]}/>)
 
     } else if(!trueAnswer && currentQuestionIndex < questionArrayLength) {
   
