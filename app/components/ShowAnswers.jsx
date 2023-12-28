@@ -4,23 +4,40 @@ export default function ShowAnswers({question,setOpacityNone,setPoints,setTrueAn
 
     const [ answers, setAnswers ] = useState([])
 
+   let allAnswersRef = useRef(null)
     let attempt = useRef(0)
 
     useEffect(()=>{
-        let arr =[0]  
+// Erste Frgae raus nehmen
+let answersArr = question.answers
+const theTrueAnswer = answersArr.shift()
+
+// Rest Array mischen
+allAnswersRef.current = answersArr.sort(() => Math.random() - 0.5)
+allAnswersRef.current.unshift(theTrueAnswer)
+// zwei random indexe erstellen (die sich nicht gleichen) ,index null wird mit 0 belegt
+        let arr =[]  
+         arr[0] = 0
         arr[1]=Math.floor(Math.random()*question.answers.length-1)+1
         arr[2]=Math.floor(Math.random()*question.answers.length-1)+1 
-checkValue()
+
+        checkValue()
 function checkValue(){
-    if(arr[1]===arr[2]){
+    if(arr[1] ==0){
+        arr[1]=Math.floor(Math.random()*question.answers.length-1)+1 
+        checkValue()
+    } else if(arr[2] ==0){
         arr[2]=Math.floor(Math.random()*question.answers.length-1)+1 
         checkValue()
+    } else if(arr[1]===arr[2]){
+        arr[2]=Math.floor(Math.random()*question.answers.length-1)+1 
+        checkValue()
+        console.log('checkValue')
     }
 }
-
+// dreier Array mischen (mit allen angezeigten 3 Antworten)
            const array = arr.sort(() => Math.random() - 0.5);
-
-        setAnswers([question.answers[array[0]],question.answers[array[1]],question.answers[array[2]]])
+        setAnswers([allAnswersRef.current[array[0]],allAnswersRef.current[array[1]],allAnswersRef.current[array[2]]])
       },[])
 
   return (<div>

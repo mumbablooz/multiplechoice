@@ -5,14 +5,14 @@ import {ShowCurrentQuestion} from './ShowCurrentQuestion'
 import {ShowFinalResult} from './ShowFinalResult'
 import {AndAgainContext} from '../context'
 
-export default function MultipleChoice({points,setPoints,questionArray}) {
+export default function MultipleChoice({points,setPoints,questionArray,andAgain,setAndAgain}) {
     const [ trueAnswer, setTrueAnswer ] = useState(null)
     const [ currentQuestionIndex, setCurrentQuestionIndex ] = useState(0)
     const [ content, setContent ] = useState(null)
+    const [ sortQuestionArray, setSortQuestionArray ] = useState(questionArray.sort(() => Math.random() - 0.5))
     const questionArrayLength = questionArray.length
 
-    let  {andAgain, setAndAgain}  = useContext(AndAgainContext)
-
+    //////////
 useEffect(()=>{
 if(andAgain){
   setTrueAnswer(null)
@@ -21,7 +21,7 @@ if(andAgain){
 
   setTimeout(()=>{
     setContent(<ShowCurrentQuestion       
-        question={questionArray[0]} 
+        question={sortQuestionArray[0]} 
         setPoints={setPoints} 
         setTrueAnswer={setTrueAnswer}
         setCurrentQuestionIndex={setCurrentQuestionIndex}    
@@ -31,25 +31,29 @@ if(andAgain){
 
   setAndAgain(false)
 }
-},[andAgain,setAndAgain,questionArray,setPoints,setTrueAnswer,setCurrentQuestionIndex])
-
+},[andAgain,setAndAgain,sortQuestionArray,setPoints,setTrueAnswer,setCurrentQuestionIndex])
+////////////
     useEffect(()=>{
 if(trueAnswer){
-        setContent(<ShowTrueAnswer trueAnswer={trueAnswer} setTrueAnswer={setTrueAnswer} question={questionArray[currentQuestionIndex-1].question}/>)
+        setContent(<ShowTrueAnswer trueAnswer={trueAnswer} setTrueAnswer={setTrueAnswer} question={sortQuestionArray[currentQuestionIndex-1].question}/>)
 
     } else if(!trueAnswer && currentQuestionIndex < questionArrayLength) {
   
       setContent(<ShowCurrentQuestion       
-        question={questionArray[currentQuestionIndex]} 
+        question={sortQuestionArray[currentQuestionIndex]} 
         setPoints={setPoints} 
         setTrueAnswer={setTrueAnswer}
         setCurrentQuestionIndex={setCurrentQuestionIndex}
 
         />)
     } else if(!trueAnswer && currentQuestionIndex===questionArrayLength) {
-setContent(<ShowFinalResult points={points} questionArrayLength={questionArrayLength} setAndAgain={setAndAgain}/>)
+setContent(<ShowFinalResult 
+  points={points} 
+  questionArrayLength={questionArrayLength}
+  andAgain={andAgain}
+  setAndAgain={setAndAgain}/>)
     }
-    },[trueAnswer,questionArray,points,setPoints,currentQuestionIndex,questionArrayLength,setAndAgain])
+    },[trueAnswer,sortQuestionArray,points,setPoints,currentQuestionIndex,questionArrayLength,setAndAgain])
 
   return (
     <section style={{

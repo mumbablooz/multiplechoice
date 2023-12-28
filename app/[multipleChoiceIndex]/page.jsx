@@ -8,7 +8,7 @@ export default function MultipleChoicePage(params) {
   const [ opacity, setOpacity ] = useState(0)
   const [fragen,setFragen] = useState(null) 
   const [pageIndex,setPageIndex] = useState(params.params.multipleChoiceIndex) 
-  
+  const [ andAgain, setAndAgain ] = useState(false) 
   useEffect(()=>{
 console.log(themenArray[pageIndex].stateName)
       fetch(themenArray[pageIndex].link)
@@ -41,7 +41,12 @@ const [ points, setPoints ] = useState(0)
      }}>Du bekommst für jede richtig beantwortete Frage 1 Punkt</p>
       </div>} 
 
-     {fragen && <MultipleChoice points={points} setPoints={setPoints} questionArray={fragen}/>}
+     {fragen && <MultipleChoice 
+     points={points} 
+     setPoints={setPoints} 
+     questionArray={fragen}
+     andAgain={andAgain}
+     setAndAgain={setAndAgain}/>}
     </section>
   )
 }

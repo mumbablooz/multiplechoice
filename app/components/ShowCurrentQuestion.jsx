@@ -1,12 +1,11 @@
 
-import React,{useState,useEffect,useRef} from 'react'
+import React,{useState,useEffect} from 'react'
 import ShowAnswers from './ShowAnswers'
 
 export function ShowCurrentQuestion({question,setPoints,setTrueAnswer,setCurrentQuestionIndex}) {
 
     const [ opacity, setOpacity ] = useState(0)
-   // const [ answersLength, setAnswersLength ] = useState(question.answers.length)
-    const [ opacityNone, setOpacityNone ] = useState(false)
+     const [ opacityNone, setOpacityNone ] = useState(false)
 
     window.scrollTo(0,0);
  

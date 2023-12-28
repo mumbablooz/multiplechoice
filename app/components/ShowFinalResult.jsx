@@ -2,10 +2,8 @@ import React, { useEffect, useState, useContext }  from 'react'
 import Link from 'next/link'
 import { AndAgainContext } from '../context'
 
-export function ShowFinalResult({points,questionArrayLength}) {
+export function ShowFinalResult({points,questionArrayLength,andAgain,setAndAgain}) {
   const [ opacity, setOpacity ] = useState(0)
-
-  let { andAgain, setAndAgain } = useContext(AndAgainContext)
 
   useEffect(()=>{
     setTimeout(()=>{
@@ -41,9 +39,9 @@ export function ShowFinalResult({points,questionArrayLength}) {
         <button 
         style={{
           alignSelf:'center',
-          width: '100vw',
+          width: '90vw',
           height: '30vh',
-          fontSize: '5rem'
+          fontSize: '3rem'
         }}
         onClick={(e)=>{
           e.target.style.backgroundColor='lightgreen'
