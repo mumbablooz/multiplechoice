@@ -22,13 +22,13 @@ p, b, button{
   font-size: 1.4rem;
 }
 h1{
-  font-size: 3rem;
-}
-h2{
   font-size: 2.6rem;
 }
-h3{
+h2{
   font-size: 2rem;
+}
+h3{
+  font-size: 1.6rem;
   font-weight: bold;
 }
 li{
