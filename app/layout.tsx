@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className={inter.className}>
-      <Link href={'/'}><h3>Multiple Choice zum lernen</h3></Link>
+      <Link href={'/'}><h2>Multiple Choice zum lernen</h2></Link>
         {children}
         </body>
     </html>
