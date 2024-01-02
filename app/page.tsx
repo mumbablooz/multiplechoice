@@ -1,5 +1,7 @@
 import Link from 'next/link'
 import {themenArray} from './themenArray'
+import Image from 'next/image'
+
 export default function Home() {
 
   return (
@@ -9,7 +11,15 @@ export default function Home() {
         return (<div 
         key={'themen-'+index}
         style={{marginBottom: '1rem'}}>
-<Link href={'/'+index}>{thema.name}</Link>
+<Link href={'/'+index}>
+  <p>{thema.name}</p>
+  <Image 
+          src={'https://cdn.pixabay.com/photo/2015/12/01/10/15/germany-lander-1071894_1280.jpg'} 
+          width={933} 
+          height={1280} 
+          style={{width: '10rem', height: 'auto'}}
+          alt='Bundeslander Bild' />
+    </Link>
         </div>)
       })}
      
