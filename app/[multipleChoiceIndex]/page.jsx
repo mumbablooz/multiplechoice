@@ -14,7 +14,7 @@ console.log(themenArray[pageIndex].stateName)
       fetch(themenArray[pageIndex].link)
       .then(res =>res.json())
       .then(data=> {
-      setFragen(data[themenArray[pageIndex].stateName])
+      setFragen(data[themenArray[pageIndex].stateName].content)
   })
   },[setFragen,pageIndex])
   
