@@ -3,11 +3,11 @@ import { useState,useEffect } from 'react'
 import MultipleChoice from '../components/MultipleChoice'
 import {themenArray} from '../themenArray'
 
-export default function MultipleChoicePage(params) {
+export default function MultipleChoicePage({params}) {
 
   const [ opacity, setOpacity ] = useState(0)
   const [fragen,setFragen] = useState(null) 
-  const [pageIndex,setPageIndex] = useState(params.params.multipleChoiceIndex) 
+  const [pageIndex,setPageIndex] = useState(params.multipleChoiceIndex) 
   const [ andAgain, setAndAgain ] = useState(false) 
   useEffect(()=>{
 console.log(themenArray[pageIndex].stateName)
