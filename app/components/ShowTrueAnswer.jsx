@@ -57,7 +57,7 @@ style={{
           width={200} 
           height={200} 
           sizes='100vw'
-          style={{width: '100vw', height: 'auto'}}
+          style={{width: '100%', height: 'auto'}}
           alt='Bundesland Bild' />}
         <WeiterButton />
         
